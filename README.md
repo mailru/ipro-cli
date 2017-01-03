@@ -5,6 +5,7 @@
 git clone https://github.com/mailru/ipro-cli.git
 cd ipro-cli
 cmake .
+make
 ```
 
 ## Usage examples
