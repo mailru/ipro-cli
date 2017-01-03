@@ -1,11 +1,16 @@
 # iproto cli tools
 
-## Build
+## Install
 ``` sh
 git clone https://github.com/mailru/ipro-cli.git
 cd ipro-cli
 cmake .
-make
+make install
+```
+
+## How do I install this as a brew formulæ on a macOS?
+``` sh
+brew install zlobspb/tap/ipro-cli
 ```
 
 ## Usage examples
