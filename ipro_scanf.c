@@ -16,7 +16,7 @@ scan_stdin(const char *format)
     ssize_t buf_len;
     size_t size, i;
     char *s;
-    uint32_t u;
+    uint32_t u; uint8_t u8; uint64_t u64;
     int32_t msg, len, syn, d;
     char buf[256];
 
@@ -93,6 +93,20 @@ scan_stdin(const char *format)
                 printf("%s", s);
                 free(s);
                 break;
+
+              case 'c':
+                  if (buf_get_uint8(&b, &u8))
+                    goto scan_err;
+
+                  printf("%c", u8);
+                  break;
+
+              case 'y':
+                  if (buf_get_uint64(&b, &u64))
+                      goto scan_err;
+
+                  printf("%"PRIu64, u64);
+                  break;
 
             default:
                 fprintf(stderr, "ipro_scanf: '%c' Invalid format character\n",

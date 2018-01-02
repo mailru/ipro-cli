@@ -21,6 +21,7 @@ main(int argc, char **argv)
     int opt;
     size_t i, format_len;
     int32_t d;
+    uint8_t u8; uint64_t u64;
     uint32_t msg, syn, u;
     struct buf h, b;
 
@@ -86,6 +87,21 @@ main(int argc, char **argv)
             case 'W':
                 u = (uint32_t)strlen(v);
                 buf_add_w(&b, u);
+                buf_add(&b, v, u);
+                break;
+
+            case 'c':
+                sscanf(v, "%c", &u8);
+                buf_add_byte(&b, u8);
+                break;
+
+            case 'K':
+                sscanf(v, "%"SCNu64, &u64);
+                buf_add(&b, &u64, sizeof(u64));
+                break;
+
+            case 'a':
+                u = (uint32_t)strlen(v);
                 buf_add(&b, v, u);
                 break;
 
